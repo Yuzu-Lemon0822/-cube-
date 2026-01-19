@@ -1,7 +1,7 @@
 export const player = {
   x: 100,
   y: 100,
-  w: 64,
-  h: 64,
+  w: 16,
+  h: 16,
   speed: 3
 };
