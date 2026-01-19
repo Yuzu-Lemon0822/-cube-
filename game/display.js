@@ -8,6 +8,8 @@ export function initDisplay() {
   canvas = document.getElementById("game");
   ctx = canvas.getContext("2d");
 
+  ctx.imageSmoothingEnabled = false;
+
   canvas.width = 800;
   canvas.height = 600;
 
