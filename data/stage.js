@@ -27,5 +27,5 @@ function fill(target, pos1, pos2, type) {
 
 export let stageData = {}
 
-stageData[1] = createBase(20, 15);
-fill(stageData[1], [0,13], [19,14], 1)
+stageData[1] = {w:20, h:15, data:createBase(20, 15)};
+fill(stageData[1].data, [0,13], [19,14], 1)

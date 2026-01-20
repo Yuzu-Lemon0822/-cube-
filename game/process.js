@@ -2,6 +2,8 @@ import { input } from "./input.js";
 import { player } from "../data/player.js";
 import { stageData } from "../data/stage.js"
 
+const W = stageData[1].w, H = stageData[1].h, map = stageData[1].data
+
 function getIncludePosition(x, y) {
   const floorX = Math.floor(x);
   const floorY = Math.floor(y);
@@ -20,10 +22,19 @@ function getIncludePosition(x, y) {
   return includePos;
 }
 
+function safetyLoader(x, y) {
+  if (y < 0 || H <= y) return false;
+  if (x < 0 || W <= x) return false;
+  if (map[y][x] === 1) return true;
+}
+
 function hitTester(x, y) {
   let hitFlag = false;
   for (let pos of getIncludePosition(x, y)) {
-    if (stageData[1][pos[1]][pos[0]] === 1) hitFlag = true;
+    if (safetyLoader(pos[0],pos[1])) {
+      hitFlag = true;
+      break;
+    }
   }
   return hitFlag;
 }
@@ -33,7 +44,7 @@ export function update() {
   if (input.left) player.powerX -= player.speed;
   player.powerX *= 0.9;
   player.x += player.powerX;
-  player.x = Math.max(0, Math.min(19, player.x));
+  player.x = Math.max(0, Math.min(W, player.x));
   if (hitTester(player.x, player.y)) {
     player.x = Math.floor(player.x);
     while(hitTester(player.x, player.y)) {
@@ -44,7 +55,7 @@ export function update() {
 
   player.powerY -= player.gravity;
   player.y += player.powerY
-  player.y = Math.max(0, Math.min(14, player.y));
+  player.y = Math.max(0, Math.min(H, player.y));
   if (hitTester(player.x, player.y)) {
     player.y = Math.floor(player.y);
     while(hitTester(player.x, player.y)) {
