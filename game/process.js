@@ -44,7 +44,7 @@ export function update() {
   if (input.left) player.powerX -= player.speed;
   player.powerX *= 0.9;
   player.x += player.powerX;
-  player.x = Math.max(0, Math.min(W, player.x));
+  player.x = Math.max(0, Math.min(W - 1, player.x));
   if (hitTester(player.x, player.y)) {
     player.x = Math.floor(player.x);
     while(hitTester(player.x, player.y)) {
@@ -55,7 +55,7 @@ export function update() {
 
   player.powerY += player.gravity;
   player.y += player.powerY
-  player.y = Math.max(0, Math.min(H, player.y));
+  player.y = Math.max(0, Math.min(H - 1, player.y));
   if (hitTester(player.x, player.y)) {
     player.y = Math.floor(player.y);
     while(hitTester(player.x, player.y)) {
