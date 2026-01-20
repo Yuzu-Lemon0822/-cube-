@@ -54,7 +54,7 @@ export function update() {
   }
 
   player.powerY += player.gravity;
-  player.y += player.powerY
+  player.y += player.powerY;
   player.y = Math.max(0, Math.min(H - 1, player.y));
   if (hitTester(player.x, player.y)) {
     player.y = Math.floor(player.y);
@@ -62,9 +62,13 @@ export function update() {
       player.y -= Math.sign(player.powerY);
     }
     if (player.powerY < 0) {
-      player.powerY = 0
+      player.powerY = 0;
     } else {
       player.powerY = -input.up * player.jumpPower;
     }
   }
+
+  player.displayX = Math.floor(player.x);
+  player.displayY = Math.floor(player.y);
 }
+

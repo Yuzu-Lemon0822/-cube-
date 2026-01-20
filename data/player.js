@@ -6,4 +6,6 @@ export const player = {
   powerY: 0,
   jumpPower: 0.22,
   gravity: 0.01,
+  displayX: 1,
+  displayY: 1,
 };
