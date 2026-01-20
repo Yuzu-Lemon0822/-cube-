@@ -4,10 +4,18 @@ function set(target, x, y, type) {
   target[y][x] = type;
 }
 
-function createBase(w, h, fill = 0) {
-  return Array.from({ length: h }, () =>
-    Array(w).fill(fill)
-  );
+function createBase(w, h, fill = 0, opts = {}) {
+  return {
+    w: w,
+    h: h,
+    camera_minX: opts.minX ?? 10,
+    camera_maxX: opts.maxX ?? w - 10,
+    camera_minY: opts.minY ?? 7.5,
+    camera_maxY: opts.maxY ?? h - 7.5,
+    data:  Array.from({ length: h }, () => 
+      Array(w).fill(fill)
+    )
+  }
 }
 
 function fill(target, pos1, pos2, type) {
@@ -27,7 +35,7 @@ function fill(target, pos1, pos2, type) {
 
 export let stageData = {}
 
-stageData[1] = {w:20, h:15, data:createBase(20, 15)};
+stageData[1] = createBase(20, 15);
 fill(stageData[1].data, [0,13], [19,14], 1)
 fill(stageData[1].data, [10,12], [15,12], 1)
 fill(stageData[1].data, [4,10], [7,10], 1)
