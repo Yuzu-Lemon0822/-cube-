@@ -27,13 +27,14 @@ function display(texture, x, y, w, h) {
     textureList[texture] = displayImage
   }
 
-  ctx.drawImage(displayImage, x, y, w, h)
+  ctx.drawImage(displayImage, x*32, y*32, w, h)
 }
 
 export function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+  display("stage",4,4,32,32)
+  display("stage",3,4,32,32)
+  
   display("player", player.x, player.y, player.w, player.h );
-
-  display("stage",200,200,32,32)
 }
