@@ -1,5 +1,8 @@
 import { input } from "./input.js";
 import { player } from "../data/player.js";
+import { stageData } from "../data/stage.js"
+
+function 
 
 export function update() {
   if (input.d) player.powerX += player.speed;
