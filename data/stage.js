@@ -31,3 +31,4 @@ stageData[1] = {w:20, h:15, data:createBase(20, 15)};
 fill(stageData[1].data, [0,13], [19,14], 1)
 fill(stageData[1].data, [10,12], [15,12], 1)
 fill(stageData[1].data, [4,10], [7,10], 1)
+fill(stageData[1].data, [13,10], [15,10], 1)

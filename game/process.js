@@ -69,6 +69,6 @@ export function update() {
   }
 
   player.displayX = Math.floor(player.x);
-  player.displayY = Math.floor(player.y);
+  player.displayY = Math.ceil(player.y);
 }
 
