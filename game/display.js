@@ -35,5 +35,5 @@ export function draw() {
 
   display("player", player.x, player.y, player.w, player.h );
 
-  display("stage",200,200,64,64)
+  display("stage",200,200,32,32)
 }
