@@ -25,7 +25,7 @@ function getIncludePosition(x, y) {
 function safetyLoader(x, y) {
   if (y < 0 || H <= y) return false;
   if (x < 0 || W <= x) return false;
-  if (map[y][x] === 1) return true;
+  return map[y][x] === 1;
 }
 
 function hitTester(x, y) {
@@ -53,7 +53,7 @@ export function update() {
     player.powerX = 0;
   }
 
-  player.powerY -= player.gravity;
+  player.powerY += player.gravity;
   player.y += player.powerY
   player.y = Math.max(0, Math.min(H, player.y));
   if (hitTester(player.x, player.y)) {
@@ -62,6 +62,6 @@ export function update() {
       player.y -= Math.sign(player.powerY);
     }
 
-    player.powerY = input.up * player.jumpPower;
+    player.powerY = -input.up * player.jumpPower;
   }
 }
