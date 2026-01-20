@@ -2,6 +2,8 @@ import { player } from "../data/player.js";
 import { textureData } from "../data/texture.js";
 import { stageData } from "../data/stage.js";
 
+const W = stageData[1].w, H = stageData[1].h, map = stageData[1].data;
+
 let ctx;
 let canvas;
 let textureList = {} //テクスチャデータをキャッシュ
@@ -45,14 +47,18 @@ function display(texture, x, y) {
   )
 }
 
+function safetyLoader(x, y) {
+  if (y < 0 || H <= y) return false;
+  if (x < 0 || W <= x) return false;
+  return map[y][x] === 1;
+}
+
 export function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  const W = stageData[1].w, H = stageData[1].h, map = stageData[1].data;
-
   for (let y = H - 1; y >= 0; y--) {
     for (let x = W - 1; x >= 0 ; x--) {
-      if (map[y][x] === 1) display("stage", x, y);
+      if (safetyLoader(x, y)) display("stage", x, y);
       if (x === player.displayX && y === player.displayY) display("player", player.x, player.y);
     }
   }
