@@ -48,11 +48,14 @@ function display(texture, x, y) {
 
 export function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  for (let y = 0; y < stageData.1.length; y++) {
-    for (let x = 0; x < stageData.1[y].length; x++) {
-      if (stageData.1[y][x] === 1) display("stage", x, y)
+
+  const map = stageData[1];
+
+  for (let y = 0; y < map.length; y++) {
+    for (let x = 0; x < map[y].length; x++) {
+      if (map[y][x] === 1) display("stage", x, y);
     }
   }
-  
+
   display("player", player.x, player.y);
 }
