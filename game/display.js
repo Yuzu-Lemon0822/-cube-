@@ -11,8 +11,8 @@ export function initDisplay() {
 
   ctx.imageSmoothingEnabled = false;
 
-  canvas.width = 800;
-  canvas.height = 600;
+  canvas.width =640;
+  canvas.height = 480;
 }
 
 function display(texture, x, y, w, h) {
