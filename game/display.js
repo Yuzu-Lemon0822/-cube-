@@ -50,8 +50,8 @@ export function draw() {
 
   const W = stageData[1].w, H = stageData[1].h, map = stageData[1].data;
 
-  for (let y = H; y >= 0; y--) {
-    for (let x = W; x >= 0 ; x--) {
+  for (let y = H - 1; y >= 0; y--) {
+    for (let x = W - 1; x >= 0 ; x--) {
       if (map[y][x] === 1) display("stage", x, y);
     }
   }
