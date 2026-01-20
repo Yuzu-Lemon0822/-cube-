@@ -3,7 +3,7 @@ import { player } from "../data/player.js";
 let ctx;
 let canvas;
 let playerImg;
-let textureList = {} //テクスチャデータをキャッシュできるならやりたい。
+let textureList = {} //テクスチャデータをキャッシュ
 
 export function initDisplay() {
   canvas = document.getElementById("game");
@@ -16,8 +16,16 @@ export function initDisplay() {
 }
 
 function display(x, y, w, h, texture) {
-  let displayImage = new Image()
-  displayImage.src = "texture/" + texture + ".png"
+  let displayImage
+  
+  if (textureList in texture) {
+    displayImage = textureList[texture]
+  } else {
+    displayImage = new Image()
+    displayImage.src = "texture/" + texture + ".png"
+
+    textureList[texture] = displayImage
+  }
 
   ctx.drawImage(displayImage, x, y, w, h)
 }
@@ -25,7 +33,7 @@ function display(x, y, w, h, texture) {
 export function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  ctx.display("player", player.x, player.y, player.w, player.h );
+  display("player", player.x, player.y, player.w, player.h );
 
-  ctx.display("stage",200,200,64,64)
+  display("stage",200,200,64,64)
 }
