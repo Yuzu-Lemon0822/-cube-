@@ -33,8 +33,8 @@ function display(texture, x, y, w, h) {
 export function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  display("stage",4,4,32,32)
-  display("stage",3,4,32,32)
+  display("stage",4,4,38,38) //テクスチャの都合上38x38
+  display("stage",3,4,38,38)
   
   display("player", player.x, player.y, player.w, player.h );
 }
