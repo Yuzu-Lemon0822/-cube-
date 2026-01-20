@@ -1,6 +1,6 @@
 export const player = {
-  x: 100,
-  y: 100,
+  x: 1,
+  y: 1,
   w: 64,
   h: 64,
   speed: 0.1,
