@@ -16,10 +16,10 @@ export function initDisplay() {
   canvas.height = 480;
 }
 
-function display(texture, x, y, w, h) {
-  let displayImage
+function display(texture, x, y) {
+  let displayImage //テクスチャの読み込み
   
-  if (texture in textureList) { //テクスチャの読み込み
+  if (texture in textureList) {
     displayImage = textureList[texture]
   } else {
     displayImage = new Image()
@@ -28,12 +28,12 @@ function display(texture, x, y, w, h) {
     textureList[texture] = displayImage
   }
 
-  let displayData
+  let displayData //サイズ、ズレ補正の読み込み
   
   if (texture in textureData) {
     displayData = textureData[texture]
   } else {
-    displayData = texureData.player
+    displayData = textureData.player
   }
   
   ctx.drawImage(
@@ -48,8 +48,8 @@ function display(texture, x, y, w, h) {
 export function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  display("stage",4,4,38,38) //テクスチャの都合上38x38
-  display("stage",3,4,38,38)
+  display("stage", 4, 4)
+  display("stage", 3, 4)
   
-  display("player", player.x, player.y, 32, 32);
+  display("player", player.x, player.y);
 }
