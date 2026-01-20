@@ -53,7 +53,7 @@ export function draw() {
   for (let y = H - 1; y >= 0; y--) {
     for (let x = W - 1; x >= 0 ; x--) {
       if (map[y][x] === 1) display("stage", x, y);
-      if (x === player.displayX && y === player.displayY) display("player", player.displayX, player.displayY);
+      if (x === player.displayX && y === player.displayY) display("player", player.x, player.y);
     }
   }
 }
