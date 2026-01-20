@@ -8,6 +8,6 @@ export function update() {
   player.x += player.powerX;
 
   // 画面外に出ないようにする（仮）
-  player.x = Math.max(0, Math.min(800 - player.w, player.x));
-  player.y = Math.max(0, Math.min(600 - player.h, player.y));
+  player.x = Math.max(0, Math.min(19, player.x));
+  player.y = Math.max(0, Math.min(14, player.y));
 }
