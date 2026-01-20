@@ -61,7 +61,6 @@ export function update() {
     while(hitTester(player.x, player.y)) {
       player.y -= Math.sign(player.powerY);
     }
-
-    player.powerY = -input.up * player.jumpPower;
+    if (player.powerY > 0) player.powerY = -input.up * player.jumpPower;
   }
 }
