@@ -6,8 +6,8 @@ export const textureData = {
     fix_y: 0
   },
   stage: {
-    w: 38,
-    h: 38,
+    w: 40,
+    h: 40,
     fix_x: -6,
     fix_y: -6
   }
