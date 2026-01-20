@@ -1,4 +1,5 @@
 import { player } from "../data/player.js";
+import { textureData } from "../data/texture.js";
 
 let ctx;
 let canvas;
@@ -18,7 +19,7 @@ export function initDisplay() {
 function display(texture, x, y, w, h) {
   let displayImage
   
-  if (texture in textureList) {
+  if (texture in textureList) { //テクスチャの読み込み
     displayImage = textureList[texture]
   } else {
     displayImage = new Image()
@@ -27,7 +28,21 @@ function display(texture, x, y, w, h) {
     textureList[texture] = displayImage
   }
 
-  ctx.drawImage(displayImage, x*32, y*32, w, h)
+  let displayData
+  
+  if (texture in textureData) {
+    displayData = textureData[texture]
+  } else {
+    displayData = texureData.player
+  }
+  
+  ctx.drawImage(
+    displayImage,
+    x*32 + displayData.fix_x,
+    y*32 + displayData.fix_y,
+    displayData.w,
+    displayData.h
+  )
 }
 
 export function draw() {
