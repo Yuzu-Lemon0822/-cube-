@@ -4,7 +4,6 @@ import { stageData } from "../data/stage.js";
 
 let ctx;
 let canvas;
-let playerImg;
 let textureList = {} //テクスチャデータをキャッシュ
 
 export function initDisplay() {
@@ -49,10 +48,10 @@ function display(texture, x, y) {
 export function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  const map = stageData[1];
+  const W = stageData[1].w, H = stageData[1].h, map = stageData[1].data;
 
-  for (let y = map.length - 1; y >= 0; y--) {
-    for (let x = map[y].length - 1; x >= 0 ; x--) {
+  for (let y = H; y >= 0; y--) {
+    for (let x = W; x >= 0 ; x--) {
       if (map[y][x] === 1) display("stage", x, y);
     }
   }
