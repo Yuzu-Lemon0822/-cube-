@@ -51,8 +51,8 @@ export function draw() {
 
   const map = stageData[1];
 
-  for (let y = 0; y < map.length; y++) {
-    for (let x = 0; x < map[y].length; x++) {
+  for (let y = map.length - 1; y => 0; y--) {
+    for (let x = map[y].length - 1; x => 0 ; x--) {
       if (map[y][x] === 1) display("stage", x, y);
     }
   }
