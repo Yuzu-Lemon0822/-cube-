@@ -36,5 +36,5 @@ export function draw() {
   display("stage",4,4,38,38) //テクスチャの都合上38x38
   display("stage",3,4,38,38)
   
-  display("player", player.x, player.y, player.w, player.h );
+  display("player", player.x, player.y, 32, 32);
 }
