@@ -1,5 +1,6 @@
 import { player } from "../data/player.js";
 import { textureData } from "../data/texture.js";
+import { stageData } from "../data/stage.js";
 
 let ctx;
 let canvas;
