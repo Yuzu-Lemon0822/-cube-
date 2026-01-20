@@ -15,10 +15,10 @@ export function initDisplay() {
   canvas.height = 600;
 }
 
-function display(x, y, w, h, texture) {
+function display(texture, x, y, w, h) {
   let displayImage
   
-  if (textureList in texture) {
+  if (texture in textureList) {
     displayImage = textureList[texture]
   } else {
     displayImage = new Image()
