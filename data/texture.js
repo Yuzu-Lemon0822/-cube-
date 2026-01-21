@@ -33,6 +33,6 @@ export let textureData = {
     w: 40,
     h: 36,
     fix_x: -6,
-    fix_y: -10
+    fix_y: -2
   }
 }
