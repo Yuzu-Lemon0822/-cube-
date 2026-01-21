@@ -1,2 +1,1 @@
-雛形はchatGPTが書いています。
-ドット絵、ゲームのプログラムなどは私が書いています。JSの特訓がてら作っています。
+https://yuzu-lemon0822.github.io/-cube-/
