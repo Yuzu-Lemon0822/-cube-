@@ -1,6 +1,7 @@
 import { player } from "../data/player.js";
 import { textureData } from "../data/texture.js";
 import { stageData } from "../data/stage.js";
+import { camera } from "../data/camera.js"
 
 const W = stageData[1].w, H = stageData[1].h, map = stageData[1].data;
 
@@ -56,9 +57,11 @@ function safetyLoader(x, y) {
 export function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  for (let y = H - 1; y >= 0; y--) {
-    for (let x = W - 1; x >= 0 ; x--) {
-      if (safetyLoader(x, y)) display("stage", x, y);
+  const fix_displayX = camera.x - 10, fix_displayY = camera.y - 7.5;
+
+  for (let y = camera.display_maxY; y >= camera.display_minY; y--) {
+    for (let x = camera.display_maxX; x >= camera.display_minX ; x--) {
+      if (safetyLoader(x, y)) display("stage", x - fix_displayX, y - fix_displayY);
       if (x === player.displayX && y === player.displayY) display("player", player.x, player.y);
     }
   }

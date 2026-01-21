@@ -1,6 +1,7 @@
 import { input } from "./input.js";
 import { player } from "../data/player.js";
 import { stageData } from "../data/stage.js"
+import { camera } from "../data/camera.js"
 
 const W = stageData[1].w, H = stageData[1].h, map = stageData[1].data
 
@@ -70,5 +71,17 @@ export function update() {
 
   player.displayX = Math.floor(player.x);
   player.displayY = Math.ceil(player.y);
-}
 
+  camera.x += (player.x - camera.x) / camera.delay
+  camera.y += (player.y - camera.y) / camera.delay
+
+  if (camera.x < stageData[1].camera_minX) camera.x = stageData[1].camera_minX
+  if (camera.x > stageData[1].camera_maxX) camera.x = stageData[1].camera_maxX
+  if (camera.y < stageData[1].camera_minY) camera.y = stageData[1].camera_minY
+  if (camera.y > stageData[1].camera_maxY) camera.y = stageData[1].camera_maxY
+
+  camera.display_minX = Math.floor(player.x - 10.5)
+  camera.display_maxX = Math.floor(player.x + 10.5)
+  camera.display_minY = Math.floor(player.y - 8)
+  camera.display_maxY = Math.floor(player.y + 8)
+}
