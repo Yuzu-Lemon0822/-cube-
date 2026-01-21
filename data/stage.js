@@ -36,7 +36,7 @@ function fill(target, pos1, pos2, type) {
 export let stageData = {}
 
 stageData[1] = createBase(32, 24);
-fill(stageData[1].data, [0,13], [19,14], 1)
-fill(stageData[1].data, [10,12], [15,12], 1)
-fill(stageData[1].data, [4,10], [7,10], 1)
-fill(stageData[1].data, [13,10], [15,10], 1)
+fill(stageData[1].data, [0,18], [23,23], 1)
+fill(stageData[1].data, [10,17], [17,17], 1)
+fill(stageData[1].data, [4,15], [7,15], 1)
+fill(stageData[1].data, [13,15], [15,15], 1)

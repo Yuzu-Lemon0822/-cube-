@@ -80,8 +80,8 @@ export function update() {
   if (camera.y < stageData[1].camera_minY) camera.y = stageData[1].camera_minY
   if (camera.y > stageData[1].camera_maxY) camera.y = stageData[1].camera_maxY
 
-  camera.display_minX = Math.floor(player.x - 10.5)
-  camera.display_maxX = Math.floor(player.x + 10.5)
-  camera.display_minY = Math.floor(player.y - 8)
-  camera.display_maxY = Math.floor(player.y + 8)
+  camera.display_minX = Math.floor(camera.x - 10.5)
+  camera.display_maxX = Math.floor(camera.x + 10.5)
+  camera.display_minY = Math.floor(camera.y - 8)
+  camera.display_maxY = Math.floor(camera.y + 8)
 }
