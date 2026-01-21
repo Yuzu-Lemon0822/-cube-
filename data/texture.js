@@ -1,5 +1,11 @@
 export const textureData = {
-  player: {
+  player_right: {
+    w: 32,
+    h: 32,
+    fix_x: 0,
+    fix_y: 0
+  },
+  player_left: {
     w: 32,
     h: 32,
     fix_x: 0,
