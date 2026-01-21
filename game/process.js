@@ -2,7 +2,6 @@ import { input } from "./input.js";
 import { player } from "../data/player.js";
 import { stageData } from "../data/stage.js"
 import { camera } from "../data/camera.js"
-import { textureData } from "../data/texture.js"
 
 const W = stageData[1].w, H = stageData[1].h, map = stageData[1].data
 
@@ -25,15 +24,26 @@ function getIncludePosition(x, y) {
 }
 
 function safetyLoader(x, y) {
-  if (y < 0 || H <= y) return false;
-  if (x < 0 || W <= x) return false;
-  return map[y][x] === 1;
+  if (y < 0 || H <= y) return "Air";
+  if (x < 0 || W <= x) return "Air";
+  return map[y][x];
+}
+
+const hitBox = {
+  Stage: function hit() {
+    return true;
+  },
+  Spike_up: function hit(x, y) {
+    player.x + 1
+    player.y + 1
+    //y = 0.5 => y+1 = 0,1
+  }
 }
 
 function hitTester(x, y) {
   let hitFlag = false;
   for (let pos of getIncludePosition(x, y)) {
-    if (safetyLoader(pos[0],pos[1])) {
+    if (safetyLoader(pos[0],pos[1]) === "Stage") {
       hitFlag = true;
       break;
     }
