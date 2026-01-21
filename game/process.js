@@ -54,6 +54,9 @@ export function update() {
     player.powerX = 0;
   }
 
+  if (player.powerX > 0) player.dir = "right"
+  if (player.powerX < 0) player.dir = "left"
+
   player.powerY += player.gravity;
   player.y += player.powerY;
   player.y = Math.max(0, Math.min(H - 1, player.y));
