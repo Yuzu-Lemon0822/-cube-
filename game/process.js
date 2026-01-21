@@ -63,9 +63,9 @@ export function update() {
 
   player.x += player.powerX;
   player.x = Math.max(0, Math.min(W - 1, player.x));
-  if (hitTester(player.x, player.y)) {
+  if (hitTester(player.x, player.y, "stage")) {
     player.x = Math.floor(player.x);
-    while(hitTester(player.x, player.y)) {
+    while(hitTester(player.x, player.y, "stage")) {
       player.x -= Math.sign(player.powerX);
     }
     player.powerX = 0;
@@ -77,9 +77,9 @@ export function update() {
   player.powerY += player.gravity;
   player.y += player.powerY;
   player.y = Math.max(0, Math.min(H - 1, player.y));
-  if (hitTester(player.x, player.y)) {
+  if (hitTester(player.x, player.y, "stage")) {
     player.y = Math.floor(player.y);
-    while(hitTester(player.x, player.y)) {
+    while(hitTester(player.x, player.y, "stage")) {
       player.y -= Math.sign(player.powerY);
     }
     if (player.powerY < 0) {
