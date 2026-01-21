@@ -42,8 +42,8 @@ function hitTester(x, y) {
 }
 
 export function update() {
-  if (input.right) player.powerX += player.speed, player.power_eye += 0.6;
-  if (input.left) player.powerX -= player.speed, player.power_eye -= 0.6;
+  if (input.right) player.powerX += player.speed;
+  if (input.left) player.powerX -= player.speed;
   player.powerX *= 0.9;
 
   player.x += player.powerX;
@@ -56,8 +56,8 @@ export function update() {
     player.powerX = 0;
   }
 
-  player.power_eye *= 0.9;
-  textureData.player_eye.fix_x = 11 + player.power_eye;
+  if (player.powerX > 0) player.dir = "right"
+  if (player.powerX < 0) player.dir = "left"
 
   player.powerY += player.gravity;
   player.y += player.powerY;

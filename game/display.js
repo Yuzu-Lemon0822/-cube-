@@ -63,8 +63,7 @@ export function draw() {
     for (let x = camera.display_maxX; x >= camera.display_minX ; x--) {
       if (safetyLoader(x, y)) display("stage", x - fix_displayX, y - fix_displayY);
       if (x === player.displayX && y === player.displayY) {
-        display("player", player.x - fix_displayX, player.y - fix_displayY);
-        display("player_eye", player.x - fix_displayX, player.y - fix_displayY);
+        display("player_" + player.dir, player.x - fix_displayX, player.y - fix_displayY);
       }
     }
   }

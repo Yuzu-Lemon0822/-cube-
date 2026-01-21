@@ -1,7 +1,7 @@
 export const player = {
   x: 1,
   y: 1,
-  power_eye: 0, 
+  dir: "right", 
   speed: 0.015,
   powerX: 0,
   powerY: 0,
