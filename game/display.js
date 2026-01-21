@@ -20,6 +20,8 @@ export function initDisplay() {
 }
 
 function display(texture, x, y) {
+  if (texture === "air") return;
+
   let displayImage //テクスチャの読み込み
   
   if (texture in textureList) {
@@ -49,9 +51,9 @@ function display(texture, x, y) {
 }
 
 function safetyLoader(x, y) {
-  if (y < 0 || H <= y) return false;
-  if (x < 0 || W <= x) return false;
-  return map[y][x] === 1;
+  if (y < 0 || H <= y) return "air";
+  if (x < 0 || W <= x) return "air";
+  return map[y][x];
 }
 
 export function draw() {
@@ -61,7 +63,7 @@ export function draw() {
 
   for (let y = camera.display_maxY; y >= camera.display_minY; y--) {
     for (let x = camera.display_maxX; x >= camera.display_minX ; x--) {
-      if (safetyLoader(x, y)) display("stage", x - fix_displayX, y - fix_displayY);
+      display(safetyLoader(x, y), x - fix_displayX, y - fix_displayY);
       if (x === player.displayX && y === player.displayY) {
         display("player_" + player.dir, player.x - fix_displayX, player.y - fix_displayY);
       }

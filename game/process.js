@@ -24,31 +24,36 @@ function getIncludePosition(x, y) {
 }
 
 function safetyLoader(x, y) {
-  if (y < 0 || H <= y) return "Air";
-  if (x < 0 || W <= x) return "Air";
+  if (y < 0 || H <= y) return "air";
+  if (x < 0 || W <= x) return "air";
   return map[y][x];
 }
 
 const hitBox = {
-  Stage: function hit() {
+  stage: function hit(obj_x, obj_y) {
     return true;
   },
-  Spike_up: function hit(x, y) {
-    player.x + 1
-    player.y + 1
-    //y = 0.5 => y+1 = 0,1
+  spike_up: function hit(obj_x, obj_y) {
+    const x = player.x - obj_x;
+    const y = player.y - obj_y;
+
+    if (Math.abs(x) > 1) return false;
+    if (Math.abs(y) > 1) return false;
+
+    return y <= -2 * Math.abs(x) + 2;
   }
 }
 
-function hitTester(x, y) {
-  let hitFlag = false;
+function hitTester(x, y, type) {
+  if (!(type in hitBox)) return false;
   for (let pos of getIncludePosition(x, y)) {
-    if (safetyLoader(pos[0],pos[1]) === "Stage") {
-      hitFlag = true;
-      break;
+    if (safetyLoader(pos[0],pos[1]) === type) {
+      if (hitBox[type](pos[0], pos[1])) {
+        return true;
+      }
     }
   }
-  return hitFlag;
+  return false;
 }
 
 export function update() {

@@ -4,7 +4,7 @@ function set(target, x, y, type) {
   target[y][x] = type;
 }
 
-function createBase(w, h, fill = "Air", opts = {}) {
+function createBase(w, h, fill = "air", opts = {}) {
   return {
     w: w,
     h: h,
@@ -36,7 +36,7 @@ function fill(target, pos1, pos2, type) {
 export let stageData = {}
 
 stageData[1] = createBase(32, 24);
-fill(stageData[1].data, [0,18], [23,23], "Stage")
-fill(stageData[1].data, [10,17], [17,17], "Stage")
-fill(stageData[1].data, [4,15], [7,15], "Stage")
-fill(stageData[1].data, [13,15], [15,15], "Stage")
+fill(stageData[1].data, [0,18], [23,23], "stage")
+fill(stageData[1].data, [10,17], [17,17], "stage")
+fill(stageData[1].data, [4,15], [7,15], "stage")
+fill(stageData[1].data, [13,15], [15,15], "stage")
