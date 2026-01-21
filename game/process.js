@@ -2,6 +2,7 @@ import { input } from "./input.js";
 import { player } from "../data/player.js";
 import { stageData } from "../data/stage.js"
 import { camera } from "../data/camera.js"
+import { textureData } from "../data/texture.js"
 
 const W = stageData[1].w, H = stageData[1].h, map = stageData[1].data
 
@@ -41,9 +42,10 @@ function hitTester(x, y) {
 }
 
 export function update() {
-  if (input.right) player.powerX += player.speed;
-  if (input.left) player.powerX -= player.speed;
+  if (input.right) player.powerX += player.speed, player.power_eye += 0.6;
+  if (input.left) player.powerX -= player.speed, player.power_eye -= 0.6;
   player.powerX *= 0.9;
+
   player.x += player.powerX;
   player.x = Math.max(0, Math.min(W - 1, player.x));
   if (hitTester(player.x, player.y)) {
@@ -54,8 +56,8 @@ export function update() {
     player.powerX = 0;
   }
 
-  if (player.powerX > 0) player.dir = "right"
-  if (player.powerX < 0) player.dir = "left"
+  player.power_eye *= 0.9;
+  textureData.player_eye.fix_x = 11 + player.power_eye;
 
   player.powerY += player.gravity;
   player.y += player.powerY;
