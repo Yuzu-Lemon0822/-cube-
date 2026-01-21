@@ -28,5 +28,11 @@ export let textureData = {
     h: 40,
     fix_x: -6,
     fix_y: -6
+  },
+  spike_up: {
+    w: 40,
+    h: 40,
+    fix_x: -6,
+    fix_y: -6
   }
 }
