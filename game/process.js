@@ -33,14 +33,10 @@ const hitBox = {
   stage: function hit(obj_x, obj_y) {
     return true;
   },
-  spike_up: function hit(obj_x, obj_y) {
-    const x = player.x - obj_x;
-    const y = player.y - obj_y;
-
-    if (Math.abs(x) > 1) return false;
-    if (Math.abs(y) > 1) return false;
-
-    return y <= -2 * Math.abs(x) + 2;
+  spike_up: function hit(obj_x, obj_y) { //三角錐ではなく小さめの短形にして簡略化
+    if (Math.abs(player.x - obj_x) > 0.6) return false;
+    if (Math.abs(player.y - obj_y) > 0.6) return false;
+    return true 
   }
 }
 
