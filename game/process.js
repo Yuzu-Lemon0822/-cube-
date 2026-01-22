@@ -1,5 +1,5 @@
 import { input } from "./input.js";
-import { player } from "../data/player.js";
+import { player, reset } from "../data/player.js";
 import { stageData } from "../data/stage.js"
 import { camera } from "../data/camera.js"
 
@@ -87,6 +87,10 @@ export function update() {
     } else {
       player.powerY = -input.up * player.jumpPower;
     }
+  }
+
+  if (hitTester(player.x, player.y, "spike_up")) {
+    reset()
   }
 
   player.displayX = Math.floor(player.x);
